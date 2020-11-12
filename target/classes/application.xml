@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    注入元素读取类-->
+    <bean id="readerFileUtils" class="com.cmcc.test.utils.ReaderFileUtil"/>
+
+<!--    注入driver-->
+    <bean id="androidDriver" class="com.cmcc.test.utils.AndroidDriverUtil" factory-method="driver"/>
+
+<!--    显示等待注入-->
+    <bean id="webDriverWait" class="org.openqa.selenium.support.ui.WebDriverWait">
+        <constructor-arg index="0" ref="androidDriver"/>
+        <constructor-arg index="1" value="2000"/>
+    </bean>
+
+<!--    实现类注入 -->
+    <bean id="hbController" class="com.cmcc.test.controller.HBController">
+        <property name="driver" ref="androidDriver"/>
+        <property name="webDriverWait" ref="webDriverWait"/>
+        <property name="readerFileUtil" ref="readerFileUtils"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,3 @@
+byXPath,/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.Button[2]
+byId,com.cmcc.hebao:id/positiveTB
+lswipe
